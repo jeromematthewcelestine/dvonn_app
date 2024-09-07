@@ -1,0 +1,24 @@
+.board {
+  border: 0px solid #000;
+  background-color: #eee;
+  border-radius: 1rem;
+  margin: auto;
+}
+
+.hex-grid {
+  stroke: black;
+  stroke-width: 1;
+}
+
+.cell_oob .hex-grid {
+  stroke: grey;
+}
+
+.selectedCell {
+  stroke: skyblue;
+  stroke-width: 3px;
+}
+
+.cell_oob circle {
+  fill: skyblue;
+}

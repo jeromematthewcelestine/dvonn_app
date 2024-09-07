@@ -1,0 +1,218 @@
+/* src/App.css */
+body {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  background-color: white;
+}
+.page {
+  border: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.gameArea {
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.4rem 0.1rem lightgray;
+  border: 1px solid firebrick;
+}
+
+.statusArea {
+  /* border: 1px solid black; */
+  width:auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+label {
+  font-size: 0.9rem;
+}
+
+.dvonnRotateIcon {
+  width: 1rem;
+}
+
+
+.spacer {
+  width: 100%;
+}
+.playerStatusArea {
+  border: 1px dashed black;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  min-width: 8rem;
+  /* background-color: lightpink; */
+  font-family: monospace;
+  background-color: white;
+}
+.active {
+  box-shadow: 0 0 0.4rem 0.1rem firebrick;
+}
+
+.playerColorBlock {
+  width: 1rem;
+  min-width: 1rem;
+  height: 1rem;
+  margin-right: 0.2rem;
+}
+.player0ColorBlock {
+  background-color: #aaa;
+}
+.player1ColorBlock {
+  background-color: black;
+}
+
+.settingsArea {
+  color: darkslategray;
+  background-color: white;
+  border: 1px dashed lightgray;
+  border-radius: 1rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  /* width: 20rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: lightgreen; */
+  
+}
+.settingsArea label {
+  font-size: 0.8rem;
+}
+
+.botTypeArea {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+.settingsTitle {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: 0.5rem auto;
+  border-bottom: 1px dashed gray;
+}
+
+
+.settingsForm {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+.dvonnBotLogo{
+  width: 10rem;
+  margin: 0.5rem;
+  margin-top: 0.1rem;
+  margin-bottom: 1rem;
+}
+.rotateIconContainer {
+  width: 100%;
+  padding: 0;
+  /* padding-right: 0.5rem; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.dvonnRotateIconButton {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dvonnRotateIconButton:hover {
+  background-color: lightgray;
+}
+
+.gameSettingsArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  
+  /* background-color: lightblue; */
+}
+.botTypeArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  background-color: white;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+  border: 1px dashed lightgray;
+}
+.botTypeTitle {
+  font-weight: bold;
+  color: gray;
+  margin-bottom: 0.5rem;
+}
+.boardArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  margin-bottom: 0;
+  /* background-color: lightblue; */
+}
+.newGameArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  margin-bottom: 0;
+  margin-top: 3rem;
+  border: 1px dashed lightgray;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  padding-bottom: 0;
+  /* background-color: lightblue; */
+}
+.newGameTitle {
+  font-weight: bold;
+  color: gray;
+  margin-bottom: 0.5rem;
+}
+.newGameSetupRadioArea {
+  width: 100%;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+.newGameButton {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.newGameButton:hover {
+  background-color: lightgray;
+}
