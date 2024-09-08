@@ -1,7 +1,7 @@
 
-import { DvonnState, Action, PlaceAction, MoveAction } from './DvonnGame';
+import { DvonnState, Action } from './DvonnGame';
 
-type ActionValue = { action: Action, value: number };
+// type ActionValue = { action: Action, value: number };
 
 class DvonnBot {
     depth: number;

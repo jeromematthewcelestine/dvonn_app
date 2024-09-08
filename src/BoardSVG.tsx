@@ -4,7 +4,6 @@ import { DvonnState, Action, MoveAction } from './DvonnGame';
 
 interface BoardProps {
   gameState: DvonnState;
-  isBotTurn: boolean;
   onAction: (action: Action) => void;
   orientation: 'horizontal' | 'vertical';
 }
@@ -104,16 +103,16 @@ const BoardSVG: React.FC<BoardProps> = ({ gameState, onAction, orientation }) =>
       .map(point => point.join(','))
       .join(' ');
 
-    let isLegalMove = false;
-    if (selectedPiece) {
-      // console.log('selectedPiece', selectedPiece);
-      const dvonnState = gameState as DvonnState;
-      isLegalMove = dvonnState.legalActions.some(action => 
-        (action as MoveAction).from.row === selectedPiece.row &&
-        (action as MoveAction).from.col === selectedPiece.col &&
-        (action as MoveAction).to.row === row && 
-        (action as MoveAction).to.col === col);
-    }
+    // let isLegalMove = false;
+    // if (selectedPiece) {
+    //   // console.log('selectedPiece', selectedPiece);
+    //   const dvonnState = gameState as DvonnState;
+    //   isLegalMove = dvonnState.legalActions.some(action => 
+    //     (action as MoveAction).from.row === selectedPiece.row &&
+    //     (action as MoveAction).from.col === selectedPiece.col &&
+    //     (action as MoveAction).to.row === row && 
+    //     (action as MoveAction).to.col === col);
+    // }
 
     const cellLastActionFrom = (
       gameState.lastAction && gameState.lastAction.type === 'move' &&
