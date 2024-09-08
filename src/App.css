@@ -8,6 +8,7 @@ body {
   background-color: white;
 }
 .page {
+  padding: 0.5rem;
   border: 0px;
   display: flex;
   flex-direction: column;
@@ -63,6 +64,9 @@ label {
 }
 .active {
   box-shadow: 0 0 0.4rem 0.1rem firebrick;
+}
+.winner {
+  box-shadow: 0 0 0.3rem 0.3rem skyblue;
 }
 
 .playerColorBlock {
@@ -215,4 +219,18 @@ label {
 }
 .newGameButton:hover {
   background-color: lightgray;
+}
+.gameOverText {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: firebrick;
+  
+}
+.infoArea {
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  max-width: 30rem;
+}
+a, a:visited, a:active, a:hover {
+  color: firebrick;
 }

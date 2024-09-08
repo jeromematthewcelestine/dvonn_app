@@ -1,17 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import BoardSVG from './BoardSVG';
-import DvonnBot from './DvonnBot'; // Import the DvonnBot class
+import React, { useState, useEffect } from 'react';
+import BoardSVG from './BoardSVG.tsx';
+import DvonnBot from './DvonnBot.tsx';
 import './App.css';
-import { MCTSGameState, mcts } from './mcts';
-import { DvonnState, Action } from './DvonnGame';
+import { mcts } from './mcts.ts';
+import { DvonnState, Action } from './DvonnGame.tsx';
 
-import { ReactComponent as iconH } from './images/2024-07-17-robot.svg';
-import icon from './images/2024-07-17-human.svg';
 import dvonnBotLogo from './images/DvonnBotLogo01.svg';
 import dvonnRotateIcon from './images/DvonnRotateIcon02.svg';
-import { wait } from '@testing-library/user-event/dist/utils';
-import { get } from 'http';
-
 
 const App: React.FC = () => {
 
@@ -20,8 +15,8 @@ const App: React.FC = () => {
   const [botType, setBotType] = useState<string>('mcts1');
   const [isBotTurn, setIsBotTurn] = useState<boolean>(false);
   const [setupType, setSetupType] = useState<string>('standardSetup');
+  const [humanPlayer, setHumanPlayer] = useState<number>(0);
 
-  const humanPlayer = 0;
   const dvonnBot = new DvonnBot(2);
 
   const handleBotTypeSelect = (newBotType : string) => () => {
@@ -53,22 +48,19 @@ const App: React.FC = () => {
     let botAction = null;
     if (botType === 'mcts1') {
       botAction = mcts(gameState, 1);
+    } else if (botType === 'mcts2') {
+      botAction = mcts(gameState, 2);
     } else if (botType === 'mcts5') {
       botAction = mcts(gameState, 5);
     } else if (botType === 'mcts10') {
       botAction = mcts(gameState, 10);
+    } else if (botType === 'heuristic') {
+      botAction = dvonnBot.selectBestMove(gameState);
     }
 
-
-    // const mctsAnalysis = getMovesAnalysisMCTS(gameState, 1.0);
-    // console.log('mctsAnalysis', mctsAnalysis);
-
-    // const botAction = dvonnBot.selectBestMove(gameState);
-    // const newGameState = gameState.applyAction(botAction);
     const newGameState = gameState.clone() as DvonnState;
     newGameState.applyAction(botAction);
 
-    
     setGameState(newGameState);
     if (newGameState.getCurrentPlayer() !== humanPlayer) {
       setIsBotTurn(true);
@@ -91,17 +83,15 @@ const App: React.FC = () => {
       startNewGameWithRandomSetup();
     }
     else {
-
       setGameState(new DvonnState());
     }
     
     // random human or bot
-    // const newHumanPlayer = Math.floor(Math.random() * 2);
-    // const newHumanPlayer = 0;
-    // setHumanPlayer(newHumanPlayer);
-    // if (newHumanPlayer === 1) {
-    //   doBotMove();
-    // }
+    const newHumanPlayer = Math.floor(Math.random() * 2);
+    setHumanPlayer(newHumanPlayer);
+    if (newHumanPlayer === 1) {
+      setIsBotTurn(true);
+    }
   }
 
   const startNewGameWithRandomSetup = () => {
@@ -115,20 +105,19 @@ const App: React.FC = () => {
       const updatedGameState = newGameState.clone() as DvonnState;
       updatedGameState.applyAction(randomAction);
       newGameState = updatedGameState;
-      // console.log('newGameState', updatedGameState);
     }
 
     setGameState(newGameState);
   };
 
-  const player0Winner = gameState.winner === 0 ? 'Winner!' : '';
-  const player1Winner = gameState.winner === 1 ? 'Winner!' : '';
+  const player0ActiveClass = (gameState.currentPlayer === 0 && !gameState.gameOver) ? 'active' : '';
+  const player1ActiveClass = (gameState.currentPlayer === 1 && !gameState.gameOver) ? 'active' : '';
 
-  const player0Active = gameState.currentPlayer === 0 ? '' : '';
-  const player1Active = gameState.currentPlayer === 1 ? '' : '';
+  const winnerText = (gameState.gameOver && gameState.winner === humanPlayer) ? 'Player wins!' : (gameState.gameOver && gameState.winner !== humanPlayer) ? 'Bot wins!' : '';
 
-  const player0ActiveClass = gameState.currentPlayer === 0 ? 'active' : '';
-  const player1ActiveClass = gameState.currentPlayer === 1 ? 'active' : '';
+  const player0WinnerClass = (gameState.gameOver && gameState.winner === 0) ? ' winner' : '';
+  const player1WinnerClass = (gameState.gameOver && gameState.winner === 1) ? ' winner' : '';
+
 
   return (
     <div className="page">
@@ -142,33 +131,40 @@ const App: React.FC = () => {
           <BoardSVG gameState={gameState} isBotTurn={isBotTurn} onAction={handlePlayerAction} orientation={boardOrientation}/>
           
           <div className="statusArea">
-            <div id="player0StatusBox" className={`playerStatusArea ` + player0ActiveClass}>
+            <div id="player0StatusBox" className={`playerStatusArea ` + player0ActiveClass + player0WinnerClass}>
               <div className="playerColorBlock player0ColorBlock">
                   &nbsp;
               </div>
               <div className="playerName player0Name">
-                { humanPlayer === 0 ? 'Player' : 'AI' }
+                { humanPlayer === 0 ? 'Player' : 'Bot' }
               </div>
               <div className="spacer">&nbsp;</div>
               <div className="playerScore player0Score">
-                {gameState.scores[0]} {player0Winner}
+                {gameState.scores[0]} 
               </div>
 
             </div> {/* player0StatusBox */}
 
-            <div id="player1StatusBox" className={`playerStatusArea ` + player1ActiveClass}>
+            <div id="player1StatusBox" className={`playerStatusArea ` + player1ActiveClass + player1WinnerClass}>
               <div className="playerColorBlock player1ColorBlock">
                   &nbsp;
               </div>
               <div className="playerName player1Name">
-              { humanPlayer === 0 ? 'AI' : 'Player' }
+              { humanPlayer === 0 ? 'Bot' : 'Player' }
               </div>
               <div className="spacer">&nbsp;</div>
               <div className="playerScore player1Score">
-                {gameState.scores[1]} {player1Winner}
+                {gameState.scores[1]} 
               </div>
             </div> {/* player1StatusBox */}
           </div> {/* statusArea */}
+
+          {gameState.gameOver &&
+            <div className="gameOverArea">
+              <div className="gameOverText">
+                Game over! {winnerText}
+              </div>
+            </div>}
         </div> {/* boardArea */}
 
         <div className="gameSettingsArea" >
@@ -191,6 +187,11 @@ const App: React.FC = () => {
                 <input type="radio" id="mcts10" name="thinkingTime" value="mcts10" onClick={handleBotTypeSelect('mcts10')}
                 checked={botType=='mcts10'}/>
                 <label htmlFor="mcts10">MCTS (10 seconds)</label>
+              </div>
+              <div>
+                <input type="radio" id="heuristic" name="thinkingTime" value="heuristic" onClick={handleBotTypeSelect('heuristic')}
+                checked={botType=='heuristic'}/>
+                <label htmlFor="heuristic">Heuristic</label>
               </div>
             </div> {/* botTypeRadioButtons */}
           </div>
@@ -229,7 +230,18 @@ const App: React.FC = () => {
         <button className="newGameButton" onClick={() => startNewGame()}>Start</button>
 
       </div>
-    
+
+      <div className="infoArea">
+        <p>
+          Dvonn is a game by <a href="https://boardgamegeek.com/boardgame/2346/dvonn">Kris Burm</a>. 
+          DvonnBot is developed by <a href="https://www.jeromewilliams.net">Jerome Williams</a>. 
+          GitHub repository for DvonnBot is <a href="">here</a>. 
+          DvonnBot uses either <a href="https://en.wikipedia.org/wiki/Monte_Carlo_tree_search">Monte Carlo Tree Search</a> or a heuristic-based evaluation function.
+        </p>
+        <p>
+          © 2024 Jerome Williams
+        </p>
+      </div>
       
     </div>
   );
