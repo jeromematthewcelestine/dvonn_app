@@ -128,7 +128,7 @@ const App: React.FC = () => {
 
         <div className="boardArea"> 
 
-          <BoardSVG gameState={gameState} isBotTurn={isBotTurn} onAction={handlePlayerAction} orientation={boardOrientation}/>
+          <BoardSVG gameState={gameState} onAction={handlePlayerAction} orientation={boardOrientation}/>
           
           <div className="statusArea">
             <div id="player0StatusBox" className={`playerStatusArea ` + player0ActiveClass + player0WinnerClass}>

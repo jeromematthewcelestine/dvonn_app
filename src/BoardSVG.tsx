@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './BoardSVG.css';
-// import { CellState, Action, MoveAction, PlaceAction } from './GameState';
-import { DvonnState, Action, MoveAction, PlaceAction } from './DvonnGame';
+import { DvonnState, Action, MoveAction } from './DvonnGame';
 
 interface BoardProps {
   gameState: DvonnState;
@@ -29,7 +28,7 @@ const GLOBAL_Y_OFFSET_HORIZONTAL = 5;
 const GLOBAL_X_OFFSET_VERTICAL = -13;
 const GLOBAL_Y_OFFSET_VERTICAL = -8;
 
-const BoardSVG: React.FC<BoardProps> = ({ gameState, isBotTurn, onAction, orientation }) => {
+const BoardSVG: React.FC<BoardProps> = ({ gameState, onAction, orientation }) => {
   const [selectedPiece, setSelectedPiece] = useState<{ row: number; col: number } | null>(null);
 
   const handleCellClick = (row: number, col: number) => {
@@ -124,11 +123,11 @@ const BoardSVG: React.FC<BoardProps> = ({ gameState, isBotTurn, onAction, orient
       gameState.lastAction && gameState.lastAction.type === 'move' &&
       gameState.lastAction.to.row === row && gameState.lastAction.to.col === col
     );
-    const cellLastActionPlaceStyle = (
-      gameState.lastAction && gameState.lastAction.type === 'place' &&
-      gameState.lastAction.row === row && gameState.lastAction.col === col
-    );
-    const lastActionColor = gameState.lastActionPlayer === 0 ? PLAYER_0_COLOR : PLAYER_1_COLOR;
+    // const cellLastActionPlaceStyle = (
+    //   gameState.lastAction && gameState.lastAction.type === 'place' &&
+    //   gameState.lastAction.row === row && gameState.lastAction.col === col
+    // );
+    // const lastActionColor = gameState.lastActionPlayer === 0 ? PLAYER_0_COLOR : PLAYER_1_COLOR;
 
     const cell_oob = gameState.board[row][col].type === -2;
     const cell_piece = gameState.board[row][col].type === 0 || gameState.board[row][col].type === 1 || gameState.board[row][col].type === 2;
