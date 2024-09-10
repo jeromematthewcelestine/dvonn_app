@@ -71,6 +71,12 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
+    if (!isMobile) {
+      setBoardOrientation('horizontal');
+    }
+  }, []);
+
+  useEffect(() => {
     if (isBotTurn) {
       setTimeout(() => {
         handleBotTurn();
@@ -237,17 +243,11 @@ const App: React.FC = () => {
         <p>
           Dvonn is a game by <a href="https://boardgamegeek.com/boardgame/2346/dvonn">Kris Burm</a>. 
           DvonnBot is developed by <a href="https://www.jeromewilliams.net">Jerome Williams</a>. 
-          GitHub repository for DvonnBot is <a href="">here</a>. 
-          DvonnBot uses either <a href="https://en.wikipedia.org/wiki/Monte_Carlo_tree_search">Monte Carlo Tree Search</a> or a heuristic-based evaluation function.
+          GitHub repository for DvonnBot is <a href="">here</a>.
         </p>
         <p>
           © 2024 Jerome Williams
         </p>
-      </div>
-
-      <div className="text-blue-600">
-        Temp text.
-
       </div>
       
     </div>
