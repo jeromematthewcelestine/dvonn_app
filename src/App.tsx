@@ -4,13 +4,14 @@ import DvonnBot from './DvonnBot.tsx';
 import './App.css';
 import { mcts } from './mcts.ts';
 import { DvonnState, Action } from './DvonnGame.tsx';
+import {isMobile} from 'react-device-detect';
 
 import dvonnBotLogo from './images/DvonnBotLogo01.svg';
 import dvonnRotateIcon from './images/DvonnRotateIcon02.svg';
 
 const App: React.FC = () => {
 
-  const [boardOrientation, setBoardOrientation] = useState<'horizontal' | 'vertical'>('horizontal');
+  const [boardOrientation, setBoardOrientation] = useState<'horizontal' | 'vertical'>('vertical');
   const [gameState, setGameState] = useState<DvonnState>(new DvonnState());
   const [botType, setBotType] = useState<string>('mcts1');
   const [isBotTurn, setIsBotTurn] = useState<boolean>(false);
@@ -120,16 +121,19 @@ const App: React.FC = () => {
 
 
   return (
-    <div className="page">
+    <div className="app">
 
       <img src={dvonnBotLogo} className="dvonnBotLogo" alt="Dvonn Bot"/>
 
+
+      {true &&
       <div className="gameArea"> {/* contains boardArea and gameSettingsArea */}
 
         <div className="boardArea"> 
-
-          <BoardSVG gameState={gameState} onAction={handlePlayerAction} orientation={boardOrientation}/>
+          {true &&
+          <BoardSVG gameState={gameState} onAction={handlePlayerAction} orientation={boardOrientation}/>}
           
+          {false &&
           <div className="statusArea">
             <div id="player0StatusBox" className={`playerStatusArea ` + player0ActiveClass + player0WinnerClass}>
               <div className="playerColorBlock player0ColorBlock">
@@ -157,7 +161,7 @@ const App: React.FC = () => {
                 {gameState.scores[1]} 
               </div>
             </div> {/* player1StatusBox */}
-          </div> {/* statusArea */}
+          </div>} {/* statusArea */}
 
           {gameState.gameOver &&
             <div className="gameOverArea">
@@ -206,7 +210,7 @@ const App: React.FC = () => {
 
         
 
-      </div> {/* gameArea */}
+      </div>} {/* gameArea */}
 
       
 
@@ -241,6 +245,11 @@ const App: React.FC = () => {
         <p>
           © 2024 Jerome Williams
         </p>
+      </div>
+
+      <div className="text-blue-600">
+        Temp text.
+
       </div>
       
     </div>

@@ -1,18 +1,23 @@
 /* src/App.css */
+* {
+  margin: 0;
+}
+
 body {
+  background-color: white;
+  color: black;
   font-family: sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1rem;
-  background-color: white;
 }
-.page {
-  padding: 0.5rem;
+.app {
+  padding-top: 0.5rem;
   border: 0px;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
+  gap: 2rem;
 }
 
 .gameArea {
@@ -23,16 +28,21 @@ body {
   border-radius: 1rem;
   box-shadow: 0 0 0.4rem 0.1rem lightgray;
   border: 1px solid firebrick;
+  padding: 1rem;
+}
+.boardArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .statusArea {
   /* border: 1px solid black; */
-  width:auto;
+  width: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
 }
@@ -52,7 +62,6 @@ label {
 .playerStatusArea {
   border: 1px dashed black;
   padding: 0.5rem;
-  margin: 0.5rem;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: row;
@@ -73,7 +82,6 @@ label {
   width: 1rem;
   min-width: 1rem;
   height: 1rem;
-  margin-right: 0.2rem;
 }
 .player0ColorBlock {
   background-color: #aaa;
@@ -87,9 +95,6 @@ label {
   background-color: white;
   border: 1px dashed lightgray;
   border-radius: 1rem;
-  margin: auto;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
   /* width: 20rem; */
   display: flex;
   flex-direction: column;
@@ -105,12 +110,10 @@ label {
   background-color: white;
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.5rem;
 }
 .settingsTitle {
   font-size: 0.8rem;
   font-weight: bold;
-  margin: 0.5rem auto;
   border-bottom: 1px dashed gray;
 }
 
@@ -118,16 +121,12 @@ label {
 .settingsForm {
   display: flex;
   flex-direction: column;
-  margin: 0.5rem;
 }
 .dvonnBotLogo{
   width: 10rem;
-  margin: 0.5rem;
-  margin-top: 0.1rem;
-  margin-bottom: 1rem;
 }
 .rotateIconContainer {
-  width: 100%;
+  /* width: 100%; */
   padding: 0;
   /* padding-right: 0.5rem; */
   display: flex;
@@ -139,7 +138,6 @@ label {
   background-color: white;
   border: 1px solid lightgray;
   border-radius: 0.5rem;
-  margin: 0.5rem;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
@@ -153,7 +151,6 @@ label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem;
   
   /* background-color: lightblue; */
 }
@@ -162,7 +159,6 @@ label {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem;
   border-radius: 1rem;
   background-color: white;
   padding: 0.5rem;
@@ -172,23 +168,12 @@ label {
 .botTypeTitle {
   font-weight: bold;
   color: gray;
-  margin-bottom: 0.5rem;
 }
-.boardArea {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
-  margin-bottom: 0;
-  /* background-color: lightblue; */
-}
+
 .newGameArea {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem;
-  margin-bottom: 0;
-  margin-top: 3rem;
   border: 1px dashed lightgray;
   border-radius: 1rem;
   padding: 0.5rem;
@@ -198,10 +183,9 @@ label {
 .newGameTitle {
   font-weight: bold;
   color: gray;
-  margin-bottom: 0.5rem;
 }
 .newGameSetupRadioArea {
-  width: 100%;  
+  /* width: 100%;   */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -211,7 +195,6 @@ label {
   background-color: white;
   border: 1px solid lightgray;
   border-radius: 0.5rem;
-  margin: 0.5rem;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
@@ -228,8 +211,11 @@ label {
 }
 .infoArea {
   font-size: 0.9rem;
-  margin-top: 2rem;
-  max-width: 30rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 0.5rem;
+  max-width: 500px; 
+
 }
 a, a:visited, a:active, a:hover {
   color: firebrick;
