@@ -126,42 +126,40 @@ const App: React.FC = () => {
       <img src={dvonnBotLogo} className="dvonnBotLogo" alt="Dvonn Bot"/>
 
 
-      {true &&
+      
       <div className="gameArea"> {/* contains boardArea and gameSettingsArea */}
 
         <div className="boardArea"> 
-          {true &&
-          <BoardSVG gameState={gameState} onAction={handlePlayerAction} orientation={boardOrientation}/>}
           
-          {false &&
-          <div className="statusArea">
-            <div id="player0StatusBox" className={`playerStatusArea ` + player0ActiveClass + player0WinnerClass}>
+          <BoardSVG gameState={gameState} onAction={handlePlayerAction} orientation={boardOrientation}/>
+          
+          
+          <div className="playerStatusArea">
+            <div id="player0StatusBox" className={`playerStatusBox ` + player0ActiveClass + player0WinnerClass}>
               <div className="playerColorBlock player0ColorBlock">
                   &nbsp;
               </div>
-              <div className="playerName player0Name">
+              <div className="playerStatusName player0Name">
                 { humanPlayer === 0 ? 'Player' : 'Bot' }
               </div>
-              <div className="spacer">&nbsp;</div>
-              <div className="playerScore player0Score">
+              <div className="playerScore">
                 {gameState.scores[0]} 
               </div>
 
             </div> {/* player0StatusBox */}
 
-            <div id="player1StatusBox" className={`playerStatusArea ` + player1ActiveClass + player1WinnerClass}>
+            <div id="player1StatusBox" className={`playerStatusBox  ` + player1ActiveClass + player1WinnerClass}>
               <div className="playerColorBlock player1ColorBlock">
                   &nbsp;
               </div>
-              <div className="playerName player1Name">
+              <div className="playerStatusName player1Name">
               { humanPlayer === 0 ? 'Bot' : 'Player' }
               </div>
-              <div className="spacer">&nbsp;</div>
-              <div className="playerScore player1Score">
+              <div className="playerScore">
                 {gameState.scores[1]} 
               </div>
             </div> {/* player1StatusBox */}
-          </div>} {/* statusArea */}
+          </div> {/* statusArea */}
 
           {gameState.gameOver &&
             <div className="gameOverArea">
@@ -175,24 +173,24 @@ const App: React.FC = () => {
           <div className="botTypeArea">
             <div className="botTypeTitle">Bot Type</div>
             <div className="botTypeRadioButtons"> 
-              <div>
+              <div className="botTypeItem">
                 <input type="radio" id="mcts1" name="thinkingTime" value="mcts1" onClick={handleBotTypeSelect('mcts1')} checked={botType=='mcts1'}/>
                 <label htmlFor="mcts1">MCTS (1 second)</label>
               </div>
-              <div>
+              <div className="botTypeItem">
                 <input type="radio" id="mcts2" name="thinkingTime" value="mcts2" onClick={handleBotTypeSelect('mcts2')} checked={botType=='mcts2'}/>
                 <label htmlFor="mcts2">MCTS (2 seconds)</label>
               </div>
-              <div>
+              <div className="botTypeItem">
                 <input type="radio" id="mcts5" name="thinkingTime" value="mcts5" onClick={handleBotTypeSelect('mcts5')} checked={botType=='mcts5'}/>
                 <label htmlFor="mcts5">MCTS (5 seconds)</label>
               </div>  
-              <div>
+              <div className="botTypeItem">
                 <input type="radio" id="mcts10" name="thinkingTime" value="mcts10" onClick={handleBotTypeSelect('mcts10')}
                 checked={botType=='mcts10'}/>
                 <label htmlFor="mcts10">MCTS (10 seconds)</label>
               </div>
-              <div>
+              <div className="botTypeItem">
                 <input type="radio" id="heuristic" name="thinkingTime" value="heuristic" onClick={handleBotTypeSelect('heuristic')}
                 checked={botType=='heuristic'}/>
                 <label htmlFor="heuristic">Heuristic</label>
@@ -210,7 +208,7 @@ const App: React.FC = () => {
 
         
 
-      </div>} {/* gameArea */}
+      </div> {/* gameArea */}
 
       
 
@@ -220,11 +218,11 @@ const App: React.FC = () => {
         <div className="newGameTitle">New Game</div>
 
         <div className="newGameSetupRadioArea">
-          <div>
+          <div className="newGameOptionItem">
             <input type="radio" id="newGameStandardSetup" checked={setupType=='standardSetup'} name="setupType" value="newGameStandardSetup" onClick={handleSetupSelect('standardSetup')}/>
             <label htmlFor="newGameStandardSetup">Standard setup</label>
           </div>
-          <div>
+          <div className="newGameOptionItem">
             <input type="radio" id="newGameRandomSetup"  name="setupType" checked={setupType=='randomSetup'}value="newGameRandomSetup" onClick={handleSetupSelect('randomSetup')} />
             <label htmlFor="newGameRandomSetup">Random setup</label>
           </div>

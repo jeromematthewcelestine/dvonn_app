@@ -20,6 +20,10 @@ body {
   gap: 2rem;
 }
 
+
+.dvonnBotLogo{
+  width: 10rem;
+}
 .gameArea {
   background-color: #eee;
   display: flex;
@@ -29,23 +33,16 @@ body {
   box-shadow: 0 0 0.4rem 0.1rem lightgray;
   border: 1px solid firebrick;
   padding: 1rem;
+  gap: 1rem;
 }
 .boardArea {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
 }
 
-.statusArea {
-  /* border: 1px solid black; */
-  width: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
+
 
 label {
   font-size: 0.9rem;
@@ -55,21 +52,34 @@ label {
   width: 1rem;
 }
 
-
-.spacer {
-  width: 100%;
-}
 .playerStatusArea {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+}
+.playerStatusBox {
   border: 1px dashed black;
   padding: 0.5rem;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: row;
-  align-items: baseline;
+  align-items: center;
+  justify-content: left;
   min-width: 8rem;
-  /* background-color: lightpink; */
+  gap: 0.3rem;
+  /* flex-basis: 8rem; */
+  
   font-family: monospace;
   background-color: white;
+}
+.playerStatusName {
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 .active {
   box-shadow: 0 0 0.4rem 0.1rem firebrick;
@@ -90,41 +100,43 @@ label {
   background-color: black;
 }
 
-.settingsArea {
-  color: darkslategray;
-  background-color: white;
-  border: 1px dashed lightgray;
-  border-radius: 1rem;
-  /* width: 20rem; */
+
+.gameSettingsArea {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: lightgreen; */
+  gap: 0.5rem;
   
+  /* background-color: lightblue; */
 }
-.settingsArea label {
-  font-size: 0.8rem;
+.botTypeArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  background-color: white;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+  border: 1px dashed lightgray;
 }
-
+.botTypeTitle {
+  font-weight: bold;
+  color: gray;
+}
 .botTypeArea {
   background-color: white;
   display: flex;
   flex-direction: column;
 }
-.settingsTitle {
-  font-size: 0.8rem;
-  font-weight: bold;
-  border-bottom: 1px dashed gray;
-}
-
-
-.settingsForm {
+.botTypeItem {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 0.2rem;
+  align-items: center;
 }
-.dvonnBotLogo{
-  width: 10rem;
-}
+
+
 .rotateIconContainer {
   /* width: 100%; */
   padding: 0;
@@ -147,29 +159,6 @@ label {
   background-color: lightgray;
 }
 
-.gameSettingsArea {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-  /* background-color: lightblue; */
-}
-.botTypeArea {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 1rem;
-  background-color: white;
-  padding: 0.5rem;
-  padding-bottom: 1rem;
-  border: 1px dashed lightgray;
-}
-.botTypeTitle {
-  font-weight: bold;
-  color: gray;
-}
-
 .newGameArea {
   display: flex;
   flex-direction: column;
@@ -177,7 +166,9 @@ label {
   border: 1px dashed lightgray;
   border-radius: 1rem;
   padding: 0.5rem;
-  padding-bottom: 0;
+  
+  gap: 0.5rem;
+
   /* background-color: lightblue; */
 }
 .newGameTitle {
@@ -192,17 +183,23 @@ label {
   align-items: left;
 }
 .newGameButton {
+  color: black;
   background-color: white;
-  border: 1px solid lightgray;
+  border: 1px solid darkgray;
   border-radius: 0.5rem;
-  padding: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+  
 }
 .newGameButton:hover {
-  background-color: lightgray;
+  background-color: darkgray;
 }
+.newGameOptionItem {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  align-items: center;
+}
+
 .gameOverText {
   font-size: 1.2rem;
   font-weight: bold;
