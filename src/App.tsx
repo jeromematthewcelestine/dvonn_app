@@ -120,7 +120,9 @@ const App: React.FC = () => {
   const player0ActiveClass = (gameState.currentPlayer === 0 && !gameState.gameOver) ? 'active' : '';
   const player1ActiveClass = (gameState.currentPlayer === 1 && !gameState.gameOver) ? 'active' : '';
 
-  const winnerText = (gameState.gameOver && gameState.winner === humanPlayer) ? 'Player wins!' : (gameState.gameOver && gameState.winner !== humanPlayer) ? 'Bot wins!' : '';
+  const winnerText = (gameState.gameOver && gameState.winner === null ? 'It\'s a tie!' :
+  (gameState.gameOver && gameState.winner === humanPlayer) ? 'Player wins!' : 
+  (gameState.gameOver && gameState.winner !== humanPlayer) ? 'Bot wins!' : '');
 
   const player0WinnerClass = (gameState.gameOver && gameState.winner === 0) ? ' winner' : '';
   const player1WinnerClass = (gameState.gameOver && gameState.winner === 1) ? ' winner' : '';
@@ -243,7 +245,7 @@ const App: React.FC = () => {
         <p>
           Dvonn is a game by <a href="https://boardgamegeek.com/boardgame/2346/dvonn">Kris Burm</a>. 
           DvonnBot is developed by <a href="https://www.jeromewilliams.net">Jerome Williams</a>. 
-          GitHub repository for DvonnBot is <a href="">here</a>.
+          GitHub repository for DvonnBot is <a href="https://github.com/jeromematthewcelestine/dvonn_app/">here</a>.
         </p>
         <p>
           © 2024 Jerome Williams
