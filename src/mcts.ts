@@ -40,7 +40,7 @@ export function mcts(rootState: MCTSGameState, timeLimitSeconds: number): any {
       node = select(node);
     }
 
-    if (node.visits === 0) {
+    if (node.visits > 0) {
       node = expand(node);
     }
 
